@@ -1,64 +1,142 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #fff;
     text-align: center;
-    background-color: #f4f6f9;
     padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
-    color: #2c3e50;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ffeb3b;
+    text-shadow: 2px 2px 8px #000;
+}
+
+/* Scoreboard */
+#scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
 }
 
 #scoreboard div {
-    margin: 5px 0;
-    font-size: 18px;
+    background-color: #1f1f1f;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
 }
 
+/* Choices Buttons */
 #choices {
-    margin: 20px 0;
+    margin-bottom: 30px;
 }
 
 .choice {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 18px;
+    padding: 15px 30px;
+    margin: 0 15px;
+    font-size: 1.5rem;
     cursor: pointer;
+    background-color: #1f1f1f;
+    border: 2px solid #ffeb3b;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+    color: #ffeb3b;
 }
 
+.choice:hover {
+    transform: translateY(-5px);
+    background-color: #333;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.9);
+}
+
+/* Emoji Display */
 #images {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
-    font-size: 24px;
+    gap: 80px;
+    font-size: 3rem;
+    margin-bottom: 30px;
 }
 
 #images div {
-    margin: 0 20px;
+    background-color: #1f1f1f;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
 }
 
-#round-result, #final-result {
-    font-size: 20px;
-    margin: 15px 0;
+/* Round Result & Final Result */
+#round-result {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    min-height: 40px;
 }
 
-#play-again {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+#final-result {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-/* Optional animations */
+/* Flash Animations */
 .win-flash {
-    color: green;
+    color: #4caf50;
     font-weight: bold;
+    text-shadow: 0 0 10px #4caf50;
 }
 
 .lose-flash {
-    color: red;
+    color: #f44336;
     font-weight: bold;
+    text-shadow: 0 0 10px #f44336;
 }
 
 .draw-flash {
-    color: gray;
+    color: #ffc107;
     font-weight: bold;
+    text-shadow: 0 0 10px #ffc107;
+}
+
+/* Play Again Button */
+#play-again {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #ffeb3b;
+    color: #121212;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+}
+
+#play-again:hover {
+    transform: translateY(-3px);
+    background-color: #ffc107;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    #scoreboard {
+        flex-direction: column;
+        gap: 15px;
+    }
+    #choices {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    #images {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
