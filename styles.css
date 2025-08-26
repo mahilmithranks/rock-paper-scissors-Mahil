@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f6f9;
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+#scoreboard div {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#choices {
+    margin: 20px 0;
+}
+
+.choice {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#images {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+#images div {
+    margin: 0 20px;
+}
+
+#round-result, #final-result {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+#play-again {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Optional animations */
+.win-flash {
+    color: green;
+    font-weight: bold;
+}
+
+.lose-flash {
+    color: red;
+    font-weight: bold;
+}
+
+.draw-flash {
+    color: gray;
+    font-weight: bold;
+}
