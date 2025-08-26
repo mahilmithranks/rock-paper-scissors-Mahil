@@ -4,12 +4,7 @@ let roundCount = 0;
 const maxRounds = 5;
 
 const choices = ["rock", "paper", "scissors"];
-
-const emojiMap = {
-    rock: "✊",
-    paper: "✋",
-    scissors: "✌️"
-};
+const emojiMap = { rock: "✊", paper: "✋", scissors: "✌️" };
 
 const playerScoreEl = document.getElementById("player-score");
 const computerScoreEl = document.getElementById("computer-score");
@@ -20,9 +15,17 @@ const playAgainBtn = document.getElementById("play-again");
 const playerChoiceEl = document.getElementById("player-choice");
 const computerChoiceEl = document.getElementById("computer-choice");
 
+const clickSound = document.getElementById("click-sound");
+const winSound = document.getElementById("win-sound");
+const loseSound = document.getElementById("lose-sound");
+const drawSound = document.getElementById("draw-sound");
+
 const buttons = document.querySelectorAll(".choice");
 buttons.forEach(button => {
-    button.addEventListener("click", () => playRound(button.id));
+    button.addEventListener("click", () => {
+        clickSound.play();
+        playRound(button.id);
+    });
 });
 
 function computerChoice() {
@@ -42,6 +45,7 @@ function playRound(playerSelection) {
     if(playerSelection === compSelection) {
         result = `Draw! ${emojiMap[playerSelection]} vs ${emojiMap[compSelection]}`;
         animateChoice("draw");
+        drawSound.play();
     } else if(
         (playerSelection === "rock" && compSelection === "scissors") ||
         (playerSelection === "paper" && compSelection === "rock") ||
@@ -50,10 +54,12 @@ function playRound(playerSelection) {
         result = `You Win! ${emojiMap[playerSelection]} beats ${emojiMap[compSelection]}`;
         playerScore++;
         animateChoice("win");
+        winSound.play();
     } else {
         result = `You Lose! ${emojiMap[compSelection]} beats ${emojiMap[playerSelection]}`;
         computerScore++;
         animateChoice("lose");
+        loseSound.play();
     }
 
     roundCount++;
@@ -78,13 +84,10 @@ function updateUI(roundResult) {
 
 function endGame() {
     let finalMessage = "";
-    if(playerScore > computerScore) {
-        finalMessage = "Congratulations! You Won The Game!";
-    } else if(playerScore < computerScore) {
-        finalMessage = "Game Over! Computer Wins The Game!";
-    } else {
-        finalMessage = "It's a Tie Game! Try Again!";
-    }
+    if(playerScore > computerScore) finalMessage = "Congratulations! You Won The Game!";
+    else if(playerScore < computerScore) finalMessage = "Game Over! Computer Wins The Game!";
+    else finalMessage = "It's a Tie Game! Try Again!";
+    
     finalResultEl.textContent = finalMessage;
     playAgainBtn.style.display = "inline-block";
 }
@@ -92,9 +95,7 @@ function endGame() {
 playAgainBtn.addEventListener("click", resetGame);
 
 function resetGame() {
-    playerScore = 0;
-    computerScore = 0;
-    roundCount = 0;
+    playerScore = 0; computerScore = 0; roundCount = 0;
     playerScoreEl.textContent = 0;
     computerScoreEl.textContent = 0;
     roundCountEl.textContent = 0;
